@@ -1,0 +1,13 @@
+$backgroundColor: #222222;
+$primary: #12bb99;
+$secondary: #12bb99a7;
+
+header {
+  background: $backgroundColor;
+  border-bottom: 1px solid $primary;
+  color: $primary;
+  padding: 0;
+  text-align: center;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2vw;
+}
