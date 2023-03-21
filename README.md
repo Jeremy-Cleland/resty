@@ -1,3 +1,67 @@
+# LAB - Component Based UI
+
+## Authors: Jeremy Cleland
+
+## Problem Domain
+
+### Phase 1 Requirements
+
+- Today, we begin the first of a 4-Phase build of the RESTy application, written in React. In this first phase, our goal is to setup the basic scaffolding of the application, with intent being to add more functionality to the system as we go. This initial build sets up the file structure so that we can progressively build this application in a scalable manner.
+
+- #### Phase 1: Application Setup
+
+  - Scaffolding
+  - Basic React Application
+  - Basic State
+  - Rendering
+
+### Phase 2 Requirements
+
+- #### Phase 2: Testing and Deployment
+
+  - Testing of React components and applications
+  - Uses best practices for testing Behaviors and Acceptance Criteria
+  - Integrates with an online CI framework
+  - Deploy to GitHub Pages, Netlify, and/or AWS
+
+### Phase 3 Requirements
+
+- #### Phase 3: State and Props
+
+  - Create multiple components to handle each aspect of the Application
+  - Sharing state and behaviors between components
+  - Basic layout and styling
+
+### Phase 4 Requirements
+
+- #### Phase 4: Fit and Finish
+
+  - Incorporate the spinner, using conditional rendering
+  - App is Fully Tested
+  - App is Fully Documented
+  - RESTy is Deployed and publicly available
+
+### How to initialize/run your application (where applicable)
+
+- `npm start`
+- `nodemon`
+- `node hub.js`
+- `node index.js`
+
+
+### Features / Routes
+
+- GET
+- POST
+- PUT
+- Delete
+
+
+### Links and Resources
+
+### UML
+
+![UML](./src/assets/uml.png)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
