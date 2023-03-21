@@ -1,0 +1,27 @@
+$backgroundColor: #171717;
+$primary: #12bb99;
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap");
+
+$font-stack: "Caveat", cursive;
+
+html, body {
+  font-family: $font-stack;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  color: $primary;
+}
+
+body {
+  background: $backgroundColor;
+  height: 100vh;
+
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+}

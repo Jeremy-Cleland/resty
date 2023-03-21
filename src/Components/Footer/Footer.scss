@@ -2,10 +2,14 @@ $backgroundColor: #222222;
 $primary: #12bb99;
 $secondary: #12bb99a7;
 
+
 footer {
   background: $backgroundColor;
   border-top: 1px solid $primary;
   padding: 1em 3em;
   margin: 0;
+  margin-top: 5vh;
   text-align: center;
+  position: relative;
+  bottom: 0;
 }

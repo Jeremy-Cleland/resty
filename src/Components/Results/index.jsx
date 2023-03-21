@@ -1,10 +1,16 @@
-import React from 'react';
+import Card from "../Card";
+import "./Results.scss";
 
-const Results = ({data}) => {
+const Results = ({ data }) => {
   return (
-    <section>
-        <pre>{data ? JSON.stringify(data, undefined, 2) : null}</pre>
-    </section>
-  )
-}
+    <>
+      {data ? (
+        <Card>
+          <pre>{JSON.stringify(data, undefined, 2)}</pre>
+        </Card>
+      ) : <div className="placeholder"></div>}
+    </>
+  );
+};
+
 export default Results;
