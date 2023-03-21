@@ -10,7 +10,7 @@ const handleSubmit = (event) => {
 
     const formData = {
       method:'GET',
-      url: event.taret.url.value,
+      url: 'https://pokeapi.co/api/v2/pokemon',
     };
    handleApiCall(formData);
   }
