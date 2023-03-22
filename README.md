@@ -42,6 +42,7 @@
   - Renders the count.
   - Renders the Result Headers as “pretty” JSON.
   - Renders the Result Body as “pretty” JSON.
+
 - #### Phase 2: Testing and Deployment
 
   - Testing of React components and applications
@@ -50,6 +51,24 @@
   - Deploy to GitHub Pages, Netlify, and/or AWS
 
 ### Phase 3 Requirements
+
+Extend your application to include the ability to send http requests and display response data, when the <Form /> component experiences a submission event.
+
+- Refactor application methods to allow for browser side HTTP requests to be sent.
+  - Your implementation should allow the user to set a url, method, and request body.
+- Make sure all relevant request and response data is displayed to the User.
+
+#### Approach
+
+- `<Form />`: component, onSubmit() sends the user’s entries to the <App /> via method sent in through props.
+
+- `<App />`: does a check on the request data from the form and updates the request variable in state with the url, method, and potentially the body.
+
+- `<App />`: has an effect hook that’s looking for changes to the request variable in state, and in response, runs the API request with the new request options from state.
+
+- `<App />`: updates state with the results of the API Request.
+
+- `<Results />`: sees the new API data as a prop and renders the JSON.
 
 - #### Phase 3: State and Props
 
@@ -73,7 +92,6 @@
 - `node hub.js`
 - `node index.js`
 
-
 ### Features / Routes
 
 - GET
@@ -81,13 +99,11 @@
 - PUT
 - Delete
 
-
 ### Links and Resources
 
 ### UML
 
 ![UML](./src/assets/uml.png)
-
 
 # Getting Started with Create React App
 
