@@ -19,6 +19,29 @@
 
 ### Phase 2 Requirements
 
+- App
+
+  - Holds application state: The Request (from the form) and the Response (from the API).
+  - Hook that can update state.
+  - Renders 2 Child Components.
+
+- Form:
+  - Expects a function to be sent to it as a prop.
+  - Renders a URL entry form.
+  - A selection of REST methods to choose from (“get” should be the default).
+    - The active selection should be displayed/styled differently than the others.
+  - Renders a Textarea to allow the user to type in a JSON object for a POST or PUT request.
+  - On submit:
+    - Send the Form entries back to the `<App />` using the method sent down in props.
+    - Form will run the API request.
+      - Toggle the “loading” status before and after the request.
+
+- Results:
+  - Conditionally renders “Loading” or the data depending on the status of the request.
+  - Expects the count, headers, results to be sent in as props.
+  - Renders the count.
+  - Renders the Result Headers as “pretty” JSON.
+  - Renders the Result Body as “pretty” JSON.
 - #### Phase 2: Testing and Deployment
 
   - Testing of React components and applications
