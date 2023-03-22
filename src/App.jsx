@@ -1,42 +1,79 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Form from "./Components/Form";
 import Results from "./Components/Results";
+
 import "./App.scss";
 
 function App() {
   // Define state
-  const [resData, setResData] = useState(null);
+  const [data, setData] = useState(null);
   const [reqParams, setReqParams] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const callApi = async (reqParams) => {
-    const { method, url, body } = reqParams;
+  useEffect(() => {
+    if (reqParams.url) {
+      callApi(reqParams);
+    }
+  }, [reqParams]);
+
+  const reqParamsUpdate = (reqParams) => {
     setReqParams(reqParams);
+  };
+
+  // Define function to call API
+  const callApi = async (reqParams) => {
+    // Set state
+    const { method, url, body } = reqParams;
+
     setIsLoading(true);
 
-    const res = await axios({
-      method,
-      url,
-      data: body,
-    });
-
-    setResData({
-      headers: res.headers,
-      body: res.data,
-    });
-    setIsLoading(false);
+    // Make API call
+    try {
+      if (!url || !method) {
+        throw new Error("Please enter a valid URL and Method");
+      } else if ((method === "PUT" || method === "POST") && !body) {
+        throw new Error("Please enter a valid body");
+      } else {
+        const res = await axios({
+          method,
+          url,
+          data: body,
+        });
+        setData({
+          headers: res.headers,
+          body: res.data,
+          status: res.status,
+        });
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setData({
+        headers: error.res.headers,
+        body: error.rese.data,
+        status: error.res.status,
+      });
+      setIsLoading(false);
+    }
   };
+
   return (
     <>
       <Header />
-      <div>Request Method: {reqParams.method}</div>
-      <div>URL: {reqParams.url}</div>
-      <Form handleApiCall={callApi} />
-      <Results data={resData} isLoading={isLoading} />
+      <div className="container-app">
+        <div className="method_container">
+          Request Method:{" "}
+          {reqParams.method ? reqParams.method.toUpperCase() : ""}
+        </div>
+        <div className="url_container">
+          URL:{""} {reqParams.url}
+        </div>
+      </div>
+      <Form handleApiCall={callApi} reqParamsUpdate={reqParamsUpdate} />
+      <Results data={data} isLoading={isLoading} />
       <Footer />
     </>
   );

@@ -1,30 +1,30 @@
-import React from "react";
+import JSONPretty from "react-json-pretty";
+var JSONPrettyAcai = require("react-json-pretty/dist/acai");
 
 import "./Results.scss";
+// var JSONPrettyMon = import("./custom.styl");
 
 const Results = ({ isLoading, data }) => {
   return (
-    <>
+    <section>
       {isLoading ? (
-        <>
-          <p>Loading....</p>
-        </>
+        <h1>Loading...</h1>
       ) : (
-        <>
-          <section>
-            {data ? (
-              <>
-                <textarea className="response" data-testid="results">
-                  {JSON.stringify([data], null, 2)}
-                </textarea>
-              </>
-            ) : (
-              <div className="placeholder"></div>
-            )}
-          </section>
-        </>
+        <pre data-testid="results">
+          {data ? (
+            <pre className="response">
+              <JSONPretty
+                id="json-pretty"
+                data={data}
+                theme={JSONPrettyAcai}
+              ></JSONPretty>
+            </pre>
+          ) : (
+            <div className="placeholder"></div>
+          )}
+        </pre>
       )}
-    </>
+    </section>
   );
 };
 
