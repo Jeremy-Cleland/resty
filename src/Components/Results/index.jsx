@@ -2,7 +2,6 @@ import JSONPretty from "react-json-pretty";
 var JSONPrettyAcai = require("react-json-pretty/dist/acai");
 
 import "./Results.scss";
-// var JSONPrettyMon = import("./custom.styl");
 
 const Results = ({ isLoading, data }) => {
   return (

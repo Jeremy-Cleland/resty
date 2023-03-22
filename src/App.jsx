@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
@@ -26,15 +26,12 @@ function App() {
 
   // Define function to call API
   const callApi = async (reqParams) => {
-    // Set state
     const { method, url, body } = reqParams;
-
     setIsLoading(true);
 
-    // Make API call
     try {
       if (!url || !method) {
-        throw new Error("Please enter a valid URL and Method");
+        throw new Error("Please enter a valid URL && Method");
       } else if ((method === "PUT" || method === "POST") && !body) {
         throw new Error("Please enter a valid body");
       } else {
