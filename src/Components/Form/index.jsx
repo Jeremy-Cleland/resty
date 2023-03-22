@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Card from "../Card";
 import "./Form.scss";
 
 const Form = (props) => {
@@ -21,7 +20,7 @@ const Form = (props) => {
   };
 
   return (
-    <Card className="card1">
+    <div className="form-card">
       <div className="form">
         <form data-testid="form" onSubmit={handleSubmit}>
           <label>
@@ -84,7 +83,7 @@ const Form = (props) => {
           </button>
         </form>
       </div>
-    </Card>
+    </div>
   );
 };
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./Results.scss";
 
 const Results = ({ isLoading, data }) => {
@@ -14,9 +12,9 @@ const Results = ({ isLoading, data }) => {
           <section>
             {data ? (
               <>
-                <textarea className="response" data-testid="results">
+                <pre className="response" data-testid="results">
                   {JSON.stringify([data], null, 2)}
-                </textarea>
+                </pre>
               </>
             ) : (
               <div className="placeholder"></div>
