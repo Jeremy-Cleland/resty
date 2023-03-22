@@ -1,14 +1,29 @@
-import Card from "../Card";
+import React from "react";
+
 import "./Results.scss";
 
-const Results = ({ data }) => {
+const Results = ({ isLoading, data }) => {
   return (
     <>
-      {data ? (
-        <Card>
-          <pre>{JSON.stringify(data, undefined, 2)}</pre>
-        </Card>
-      ) : <div className="placeholder"></div>}
+      {isLoading ? (
+        <>
+          <p>Loading....</p>
+        </>
+      ) : (
+        <>
+          <section>
+            {data ? (
+              <>
+                <textarea className="response" data-testid="results">
+                  {JSON.stringify([data], null, 2)}
+                </textarea>
+              </>
+            ) : (
+              <div className="placeholder"></div>
+            )}
+          </section>
+        </>
+      )}
     </>
   );
 };

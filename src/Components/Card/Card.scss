@@ -3,17 +3,26 @@ $radius: 12px;
 $btnColor: #12bb99;
 $hvrColor: #12bb99a7;
 $black: #000 !default;
-$box-shadow: 0 1rem 1.5rem rgba($black, 0.50) !default;
-
+$box-shadow: 0 1rem 1.5rem rgba($black, 0.5) !default;
 
 .card {
   background-color: $backgroundColor;
   padding: 1rem;
   margin: 2rem auto;
-  width: 50rem;
+  width: 50vw;
   max-width: 95%;
-  height: 25vh;
+  height: 50vh;
   border-radius: $radius;
   box-shadow: $box-shadow;
+}
 
+.card1 {
+  background-color: $backgroundColor;
+  padding: 1rem;
+  margin: 2rem auto;
+  width: 50vw;
+  max-width: 95%;
+  height: 40vh;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
 }

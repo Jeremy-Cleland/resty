@@ -1,4 +1,27 @@
+$backgroundColor: #222222;
+$radius: 12px;
+$primary: #12bb99;
+$secondary: #12bb99a7;
+$font-stack: "Caveat", cursive;
+$black: #000 !default;
+$box-shadow: 0 1rem 1.5rem rgba($black, 0.5) !default;
+
 .placeholder {
-  width: 33vw;
-  height: 33vh;
+  height: 50vh;
+}
+
+.response {
+  background-color: $backgroundColor;
+  color: $primary;
+  display: flex;
+  width: 50vw;
+  max-width: 95%;
+  height: 50vh;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+  overflow-y: scroll;
+  resize: none;
+  border: none;
+  padding: 1rem;
+  margin: 2rem auto;
 }

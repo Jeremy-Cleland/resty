@@ -1,75 +1,42 @@
-import {useState} from "react";
+import { useState } from "react";
+import axios from "axios";
 
-// // Let's talk about using index.js and some other name in the component folder.
-// // There's pros and cons for each way of doing this...
-// // OFFICIALLY, we have chosen to use the Airbnb style guide naming convention.
-// // Why is this source of truth beneficial when spread across a global organization?
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Form from "./Components/Form";
 import Results from "./Components/Results";
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       data: null,
-//       requestParams: {},
-//     };
-//   }
-
-//   callApi = (requestParams) => {
-//     // mock output
-//     const data = {
-//       count: 2,
-//       results: [
-//         { name: "fake thing 1", url: "http://fakethings.com/1" },
-//         { name: "fake thing 2", url: "http://fakethings.com/2" },
-//       ],
-//     };
-//     this.setState({ data, requestParams });
-//   };
-
-//   render() {
-//     return (
-//         <React.Fragment>
-//           <Header />
-//           <div>Request Method: {this.state.requestParams.method}</div>
-//           <div>URL: {this.state.requestParams.url}</div>
-//           <Form handleApiCall={this.callApi} />
-//           <Results data={this.state.data} />
-//           <Footer />
-//         </React.Fragment>
-
-//     );
-//   }
-// }
-
-// export default App;
+import "./App.scss";
 
 function App() {
-  const [data, setData] = useState(null);
-  const [requestParams, setRequestParams] = useState({});
-  const callApi = (requestParams) => {
-    // mock output
-    const data = {
-      count: 2,
-      results: [
-        { name: "fake thing 1", url: "http://fakethings.com/1" },
-        { name: "fake thing 2", url: "http://fakethings.com/2" },
-      ],
-    };
-    setData(data);
-    setRequestParams(requestParams);
-  };
+  // Define state
+  const [resData, setResData] = useState(null);
+  const [reqParams, setReqParams] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
+  const callApi = async (reqParams) => {
+    const { method, url, body } = reqParams;
+    setReqParams(reqParams);
+    setIsLoading(true);
+
+    const res = await axios({
+      method,
+      url,
+      data: body,
+    });
+
+    setResData({
+      headers: res.headers,
+      body: res.data,
+    });
+    setIsLoading(false);
+  };
   return (
     <>
       <Header />
-      <div>Request Method: {requestParams.method}</div>
-      <div>URL: {requestParams.url}</div>
+      <div>Request Method: {reqParams.method}</div>
+      <div>URL: {reqParams.url}</div>
       <Form handleApiCall={callApi} />
-      <Results data={data} />
+      <Results data={resData} isLoading={isLoading} />
       <Footer />
     </>
   );
