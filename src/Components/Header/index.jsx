@@ -1,11 +1,10 @@
-import React from 'react';
-import './Header.scss';
+import "./Header.scss";
 
 const Header = () => {
-  return(
-    <header>
+  return (
+    <header data-testid="header">
       <h1>RESTy</h1>
     </header>
-  )
-}
+  );
+};
 export default Header;

@@ -1,50 +1,45 @@
-import React from 'react';
+import { useState } from "react";
+import axios from "axios";
 
-import './App.scss';
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Form from "./Components/Form";
+import Results from "./Components/Results";
+import "./App.scss";
 
-// Let's talk about using index.js and some other name in the component folder.
-// There's pros and cons for each way of doing this...
-// OFFICIALLY, we have chosen to use the Airbnb style guide naming convention. 
-// Why is this source of truth beneficial when spread across a global organization?
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Form from './Components/Form';
-import Results from './Components/Results';
+function App() {
+  // Define state
+  const [resData, setResData] = useState(null);
+  const [reqParams, setReqParams] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
-class App extends React.Component {
+  const callApi = async (reqParams) => {
+    const { method, url, body } = reqParams;
+    setReqParams(reqParams);
+    setIsLoading(true);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      requestParams: {},
-    };
-  }
+    const res = await axios({
+      method,
+      url,
+      data: body,
+    });
 
-  callApi = (requestParams) => {
-    // mock output
-    const data = {
-      count: 2,
-      results: [
-        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
-      ],
-    };
-    this.setState({data, requestParams});
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <Header />
-        <div>Request Method: {this.state.requestParams.method}</div>
-        <div>URL: {this.state.requestParams.url}</div>
-        <Form handleApiCall={this.callApi}/>
-        <Results data={this.state.data} />
-        <Footer />
-      </React.Fragment>
-    );
-  }
+    setResData({
+      headers: res.headers,
+      body: res.data,
+    });
+    setIsLoading(false);
+  };
+  return (
+    <>
+      <Header />
+      <div>Request Method: {reqParams.method}</div>
+      <div>URL: {reqParams.url}</div>
+      <Form handleApiCall={callApi} />
+      <Results data={resData} isLoading={isLoading} />
+      <Footer />
+    </>
+  );
 }
 
 export default App;

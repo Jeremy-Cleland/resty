@@ -1,11 +1,7 @@
-import React from 'react';
-
-import './Footer.scss';
+import "./Footer.scss";
 
 function Footer() {
-    return (
-    <footer>&copy; Jeremy Cleland | 2023</footer>
-    )
+  return <footer>&copy; Jeremy Cleland | 2023</footer>;
 }
 
 export default Footer;

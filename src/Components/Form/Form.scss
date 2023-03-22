@@ -1,76 +1,69 @@
 $backgroundColor: #222222;
 $radius: 12px;
-$btnColor: #12bb99;
-$hvrColor: #12bb99a7;
+$primary: #12bb99;
+$secondary: #12bb99a7;
+$font-stack: "Caveat", cursive;
 
-
-form {
-  display: inline-block;
-  padding: 50px;
-  background-color: $backgroundColor;
-  margin: auto;
-  width: 500px;
-  height: 300px;
-  border: 1px solid $btnColor;
-  margin-top: 15vh;
-  align-content: center;
+.form {
+  gap: 1rem;
   align-items: center;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-  border-radius: $radius;
-
-
-
+  background-color: $backgroundColor;
 
   label {
     display: flex;
     padding: 10px;
-    margin: 5vh 0;
     color: #fff;
+    gap: 1rem;
 
-    
- 
     input {
-      margin-left: 10px;
-      margin-right: 10px;
+      width: 35rem;
+      margin: auto;
       border-radius: $radius;
-      border: 1px solid #eee;
-      padding: 5px;
-      width: 80%;
-      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+      border: none;
+      padding: 0.5rem;
     }
 
     &.methods {
-      span {
-        cursor: pointer;
-        display: inline-block;
-        text-align: center;
-        width: 150px;
-        margin: 0 2rem;
-        padding: .25rem .5rem;
-        background: $btnColor;
-        border-radius: $radius;
-        color: $backgroundColor;
-        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-    
-
-        &:hover, &.active {
-          background: $hvrColor;
-        }
-      }
-    }
-
-    
-    button {
-      cursor: pointer;
-      border: none;
-      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-      width: 50px;
-      border-radius: $radius;
-      background-color: $btnColor;
-      &:hover {
-        background-color: $hvrColor;
-      }
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
     }
   }
-    
+  button {
+    cursor: pointer;
+    display: block;
+    padding: 0.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: $font-stack;
+    border: none;
+    margin: auto;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+    width: 100px;
+    border-radius: $radius;
+    background-color: $primary;
+
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+  .formButton {
+    width: 200px;
+    margin-top: 1vh;
+    padding: 0.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  textarea {
+    width: 35rem;
+    margin: auto;
+    padding: 0.5rem;
+    gap: 1rem;
+    width: 35rem;
+    height: 20vh;
+    max-width: 95%;
+    resize: none;
+    border-radius: $radius;
+    border: none;
+  }
 }

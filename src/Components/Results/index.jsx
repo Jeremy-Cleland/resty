@@ -1,10 +1,31 @@
-import React from 'react';
+import React from "react";
 
-const Results = ({data}) => {
+import "./Results.scss";
+
+const Results = ({ isLoading, data }) => {
   return (
-    <section>
-        <pre>{data ? JSON.stringify(data, undefined, 2) : null}</pre>
-    </section>
-  )
-}
+    <>
+      {isLoading ? (
+        <>
+          <p>Loading....</p>
+        </>
+      ) : (
+        <>
+          <section>
+            {data ? (
+              <>
+                <textarea className="response" data-testid="results">
+                  {JSON.stringify([data], null, 2)}
+                </textarea>
+              </>
+            ) : (
+              <div className="placeholder"></div>
+            )}
+          </section>
+        </>
+      )}
+    </>
+  );
+};
+
 export default Results;

@@ -15,8 +15,33 @@
   - Basic State
   - Rendering
 
+- ##### [Code Sandbox-Phase 1](https://codesandbox.io/p/github/Jeremy-Cleland/resty/main?file=%2FREADME.md&workspace=%257B%2522activeFileId%2522%253A%2522clfhlntk1000gg5hk3mdw8hjl%2522%252C%2522openFiles%2522%253A%255B%2522%252FREADME.md%2522%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522spaces%2522%253A%257B%2522clfhlnvpb000x3b6ik32peqpf%2522%253A%257B%2522key%2522%253A%2522clfhlnvpb000x3b6ik32peqpf%2522%252C%2522name%2522%253A%2522Default%2522%252C%2522devtools%2522%253A%255B%257B%2522key%2522%253A%2522clfhlsgof00is3b6i66a7271g%2522%252C%2522type%2522%253A%2522PROJECT_SETUP%2522%252C%2522isMinimized%2522%253Afalse%257D%252C%257B%2522type%2522%253A%2522PREVIEW%2522%252C%2522taskId%2522%253A%2522start%2522%252C%2522port%2522%253A3000%252C%2522key%2522%253A%2522clfhlsmnd00ru3b6iduu0um54%2522%252C%2522isMinimized%2522%253Afalse%257D%252C%257B%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522start%2522%252C%2522key%2522%253A%2522clfhlsj6n00nz3b6is4etjdx1%2522%252C%2522isMinimized%2522%253Afalse%257D%255D%257D%257D%252C%2522currentSpace%2522%253A%2522clfhlnvpb000x3b6ik32peqpf%2522%252C%2522spacesOrder%2522%253A%255B%2522clfhlnvpb000x3b6ik32peqpf%2522%255D%252C%2522hideCodeEditor%2522%253Afalse%257D)
+
 ### Phase 2 Requirements
 
+- App
+
+  - Holds application state: The Request (from the form) and the Response (from the API).
+  - Hook that can update state.
+  - Renders 2 Child Components.
+
+- Form:
+  - Expects a function to be sent to it as a prop.
+  - Renders a URL entry form.
+  - A selection of REST methods to choose from (“get” should be the default).
+    - The active selection should be displayed/styled differently than the others.
+  - Renders a Textarea to allow the user to type in a JSON object for a POST or PUT request.
+  - On submit:
+    - Send the Form entries back to the `<App />` using the method sent down in props.
+    - Form will run the API request.
+      - Toggle the “loading” status before and after the request.
+
+- Results:
+  - Conditionally renders “Loading” or the data depending on the status of the request.
+  - Expects the count, headers, results to be sent in as props.
+  - Renders the count.
+  - Renders the Result Headers as “pretty” JSON.
+  - Renders the Result Body as “pretty” JSON.
 - #### Phase 2: Testing and Deployment
 
   - Testing of React components and applications
@@ -62,6 +87,8 @@
 ### UML
 
 ![UML](./src/assets/uml.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
