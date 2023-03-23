@@ -1,7 +1,8 @@
 $backgroundColor: #222222;
 $radius: 12px;
-$primary: #12bb99;
-$secondary: #12bb99a7;
+$primary: #b553bf;
+$secondary: #823a89;
+$third: #fba856;
 $font-stack: "Caveat", cursive;
 $black: #000 !default;
 $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
@@ -25,7 +26,7 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
       padding: 0.5rem;
       background-color: #171717;
       border: $primary solid 1px;
-      color: $primary;
+      color: $third;
     }
 
     &.methods {
@@ -49,10 +50,10 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
     background-color: $primary;
 
     &:hover {
-      background-color: $secondary;
+      background-color: $third;
     }
     &:active {
-      background-color: $backgroundColor;
+      background-color: $third;
       color: $primary;
       box-shadow: $box-shadow;
       transform: translateY(3px);
@@ -70,7 +71,7 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
     background-color: #171717;
     box-shadow: inset 0 0 20px #171717;
     border: $primary solid 1px;
-    color: $primary;
+    color: $third;
     width: 40rem;
     height: 20vh;
     max-width: 95%;
@@ -92,5 +93,5 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
   height: 40vh;
   border-radius: $radius;
   box-shadow: $box-shadow;
-  filter: drop-shadow(0px 0px 10px #000);
+  filter: drop-shadow(0px 0px 5px #000);
 }

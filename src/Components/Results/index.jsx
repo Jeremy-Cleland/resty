@@ -14,7 +14,12 @@ const Results = ({ isLoading, data }) => {
             <pre className="response">
               <JSONPretty
                 id="json-pretty"
-                data={data}
+                data={data.headers}
+                theme={JSONPrettyAcai}
+              ></JSONPretty>
+              <JSONPretty
+                id="json-pretty"
+                data={data.body}
                 theme={JSONPrettyAcai}
               ></JSONPretty>
             </pre>

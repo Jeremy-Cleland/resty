@@ -40,7 +40,7 @@ const Form = ({ reqParamsUpdate }) => {
               type="get-button"
               onClick={() => setMethod("GET")}
             >
-              GET:
+              GET
             </button>
             <button
               id="post"

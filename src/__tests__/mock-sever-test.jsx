@@ -69,7 +69,7 @@ describe("Form Mock Server Test", () => {
     expect(input.value).toBe("https://pokeapi.co/api/v2/pokemon");
   });
 
-  test("that it renders the reuslts when the form is submitted using the form submit button", async () => {
+  test("that it renders the reuslts when the form is subnnmitted using the form submit button", async () => {
     const reqParamsUpdate = jest.fn();
 
     const data = {
