@@ -4,7 +4,7 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 
 import Form from "../Components/Form";
-import App from "../App";
+
 import Results from "../Components/Results";
 
 const server = setupServer(
