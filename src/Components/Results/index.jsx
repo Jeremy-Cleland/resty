@@ -2,7 +2,6 @@ import JSONPretty from "react-json-pretty";
 var JSONPrettyAcai = require("react-json-pretty/dist/acai");
 
 import "./Results.scss";
-// var JSONPrettyMon = import("./custom.styl");
 
 const Results = ({ isLoading, data }) => {
   return (
@@ -15,7 +14,12 @@ const Results = ({ isLoading, data }) => {
             <pre className="response">
               <JSONPretty
                 id="json-pretty"
-                data={data}
+                data={data.headers}
+                theme={JSONPrettyAcai}
+              ></JSONPretty>
+              <JSONPretty
+                id="json-pretty"
+                data={data.body}
                 theme={JSONPrettyAcai}
               ></JSONPretty>
             </pre>

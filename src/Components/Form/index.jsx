@@ -2,8 +2,7 @@ import { useState } from "react";
 
 import "./Form.scss";
 
-const Form = (props) => {
-  const { handleApiCall } = props;
+const Form = ({ reqParamsUpdate }) => {
   const [method, setMethod] = useState("GET");
   const [url, setUrl] = useState("");
   const [body, setBody] = useState({});
@@ -16,7 +15,8 @@ const Form = (props) => {
       url: url,
       body: body,
     };
-    handleApiCall(formData);
+
+    reqParamsUpdate(formData);
   };
 
   return (
@@ -37,15 +37,15 @@ const Form = (props) => {
             <button
               id="get"
               className={method === "GET" ? "active" : null}
-              type="button"
+              type="get-button"
               onClick={() => setMethod("GET")}
             >
-              GET:
+              GET
             </button>
             <button
               id="post"
               className={method === "POST" ? "active" : null}
-              type="button"
+              type="post-button"
               onClick={() => setMethod("POST")}
             >
               POST
@@ -53,7 +53,7 @@ const Form = (props) => {
             <button
               id="put"
               className={method === "PUT" ? "active" : null}
-              type="button"
+              type="put-button"
               onClick={() => setMethod("PUT")}
             >
               PUT
@@ -61,7 +61,7 @@ const Form = (props) => {
             <button
               id="delete"
               className={method === "DELETE" ? "active" : null}
-              type="button"
+              type="delete-button"
               onClick={() => setMethod("DELETE")}
             >
               DELETE
@@ -78,7 +78,11 @@ const Form = (props) => {
               </label>
             </>
           ) : null}
-          <button className="formButton" data-testid="formButton" type="submit">
+          <button
+            className="formButton"
+            data-testid="form-button"
+            type="submit"
+          >
             GO!
           </button>
         </form>

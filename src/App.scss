@@ -1,9 +1,9 @@
 $backgroundColor: #171717;
 $secondaryBG: #222222;
-$primary: #12bb99;
+$primary: #b553bf;
 $radius: 12px;
-$primary: #12bb99;
-$secondary: #12bb99a7;
+$secondary: #823a89;
+$third: #fba856;
 $font-stack: "Caveat", cursive;
 $black: #000 !default;
 $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
@@ -18,7 +18,7 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
-  color: $primary;
+  color: $third;
 }
 
 body {
@@ -39,6 +39,7 @@ body {
   }
 
   .method_container {
+    color: $third;
     margin-right: 1rem;
     background-color: $secondaryBG;
     width: 12vw;
@@ -46,7 +47,7 @@ body {
     height: auto;
     border-radius: $radius;
     box-shadow: $box-shadow;
-    filter: drop-shadow(0px 0px 10px #000);
+    filter: drop-shadow(0px 0px 5px #000);
   }
 
   .url_container {
@@ -56,6 +57,6 @@ body {
     height: auto;
     border-radius: $radius;
     box-shadow: $box-shadow;
-    filter: drop-shadow(0px 0px 10px #000);
+    filter: drop-shadow(0px 0px 5px #000);
   }
 }
