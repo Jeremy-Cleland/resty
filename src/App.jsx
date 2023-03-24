@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "axios";
 
 import Header from "./Components/Header";
+import History from "./Components/History/History";
 import Footer from "./Components/Footer";
 import Form from "./Components/Form";
 import Results from "./Components/Results";
@@ -9,26 +10,49 @@ import Results from "./Components/Results";
 import "./App.scss";
 
 function App() {
-  // Define state
-  const [data, setData] = useState(null);
-  const [reqParams, setReqParams] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const initalState = {
+    reqParams: {},
+    data: null,
+    isLoading: false,
+    history: [],
+  };
+
+  const switchReducer = (state = initalState, action) => {
+    switch (action.type) {
+      case "UPDATE_REQ_PARAMS":
+        return { ...state, reqParams: action.payload };
+      case "UPDATE_DATA":
+        return { ...state, data: action.payload };
+      case "UPDATE_IS_LOADING":
+        return { ...state, isLoading: action.payload };
+      case "UPDATE_HISTORY":
+        return { ...state, history: [...state.history, action.payload] };
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(switchReducer, initalState);
+
+  const { reqParams, data, isLoading, history } = state;
 
   useEffect(() => {
     if (reqParams.url) {
+      dispatch({ type: "UPDATE_IS_LOADING", payload: true });
       callApi(reqParams);
-      console.log("useEffect");
     }
   }, [reqParams]);
 
-  const reqParamsUpdate = (reqParams) => {
-    setReqParams(reqParams);
+  const updateParams = (reqParams) => {
+    dispatch({ type: "UPDATE_REQ_PARAMS", payload: reqParams });
+    dispatch({ type: "UPDATE_HISTORY", payload: reqParams });
+    // dispatch({ type: "UPDATE_HISTORY", payload: [...history, reqParams] });
   };
 
   // Define function to call API
+
   const callApi = async (reqParams) => {
     const { method, url, body } = reqParams;
-    setIsLoading(true);
 
     try {
       if (!url || !method) {
@@ -41,20 +65,27 @@ function App() {
           url,
           data: body,
         });
-        setData({
-          headers: res.headers,
-          body: res.data,
-          status: res.status,
+        dispatch({
+          type: "UPDATE_DATA",
+          payload: {
+            headers: res.headers,
+            body: res.data,
+            status: res.status,
+          },
         });
-        setIsLoading(false);
+
+        dispatch({ type: "UPDATE_IS_LOADING", payload: false });
       }
     } catch (error) {
-      setData({
-        headers: error.res.headers,
-        body: error.rese.data,
-        status: error.res.status,
+      dispatch({
+        type: "UPDATE_DATA",
+        payload: {
+          headers: error.res.headers,
+          body: error.res.data,
+          status: error.res.status,
+        },
       });
-      setIsLoading(false);
+      dispatch({ type: "UPDATE_IS_LOADING", payload: false });
     }
   };
 
@@ -63,15 +94,14 @@ function App() {
       <Header />
       <div className="container-app">
         <div className="method_container">
-          Request Method:{" "}
-          {reqParams.method ? reqParams.method.toUpperCase() : ""}
+          Request Method: {reqParams.method}
         </div>
-        <div className="url_container">
-          URL:{""} {reqParams.url}
-        </div>
+        <div className="url_container">URL: {reqParams.url}</div>
       </div>
-      <Form handleApiCall={callApi} reqParamsUpdate={reqParamsUpdate} />
-      <Results data={data} isLoading={isLoading} />
+      <Form handleApiCall={callApi} updateParams={updateParams} />
+      <Results data={data} isLoading={isLoading} data-testid="json-body" />
+      <History history={history} updateParams={updateParams} />
+
       <Footer />
     </>
   );

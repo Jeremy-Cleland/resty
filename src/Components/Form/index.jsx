@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./Form.scss";
 
-const Form = ({ reqParamsUpdate }) => {
+const Form = ({ updateParams }) => {
   const [method, setMethod] = useState("GET");
   const [url, setUrl] = useState("");
   const [body, setBody] = useState({});
@@ -16,7 +16,7 @@ const Form = ({ reqParamsUpdate }) => {
       body: body,
     };
 
-    reqParamsUpdate(formData);
+    updateParams(formData);
   };
 
   return (
@@ -37,7 +37,7 @@ const Form = ({ reqParamsUpdate }) => {
             <button
               id="get"
               className={method === "GET" ? "active" : null}
-              type="get-button"
+              type="button"
               onClick={() => setMethod("GET")}
             >
               GET
@@ -45,7 +45,7 @@ const Form = ({ reqParamsUpdate }) => {
             <button
               id="post"
               className={method === "POST" ? "active" : null}
-              type="post-button"
+              type="button"
               onClick={() => setMethod("POST")}
             >
               POST
@@ -53,7 +53,7 @@ const Form = ({ reqParamsUpdate }) => {
             <button
               id="put"
               className={method === "PUT" ? "active" : null}
-              type="put-button"
+              type="button"
               onClick={() => setMethod("PUT")}
             >
               PUT
@@ -61,7 +61,7 @@ const Form = ({ reqParamsUpdate }) => {
             <button
               id="delete"
               className={method === "DELETE" ? "active" : null}
-              type="delete-button"
+              type="button"
               onClick={() => setMethod("DELETE")}
             >
               DELETE
