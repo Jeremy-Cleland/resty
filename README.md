@@ -78,6 +78,19 @@ Extend your application to include the ability to send http requests and display
 
 ### Phase 4 Requirements
 
+Refactor your state management within the App component to use the useReducer() hook.
+
+  1. Replace any component state managements to use derived state from useReducer() with a reducer function and initial state.
+
+- Suggested approach:
+  - `<App />`: Use a reducer to store and manage all application state: loading, results, history.
+    - Add to history array in state after every api call
+      - method, url, results (json).
+
+  - `<History />`: Iterates the history array in state and shows the previous API calls.
+    - When one is clicked on, show the results in the results component.
+      - Note: the results component renders whatever is in state.
+
 - #### Phase 4: Fit and Finish
 
   - Incorporate the spinner, using conditional rendering
