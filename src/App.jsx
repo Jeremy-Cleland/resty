@@ -19,13 +19,13 @@ function App() {
 
   const switchReducer = (state = initalState, action) => {
     switch (action.type) {
-      case "UPDATE_REQ_PARAMS":
+      case "setReqParams":
         return { ...state, reqParams: action.payload };
-      case "UPDATE_DATA":
+      case "setData":
         return { ...state, data: action.payload };
-      case "UPDATE_IS_LOADING":
+      case "setIsLoading":
         return { ...state, isLoading: action.payload };
-      case "UPDATE_HISTORY":
+      case "setHistory":
         return { ...state, history: [...state.history, action.payload] };
       default:
         return state;
@@ -38,14 +38,14 @@ function App() {
 
   useEffect(() => {
     if (reqParams.url) {
-      dispatch({ type: "UPDATE_IS_LOADING", payload: true });
+      dispatch({ type: "setIsLoading", payload: true });
       callApi(reqParams);
     }
   }, [reqParams]);
 
   const updateParams = (reqParams) => {
-    dispatch({ type: "UPDATE_REQ_PARAMS", payload: reqParams });
-    dispatch({ type: "UPDATE_HISTORY", payload: reqParams });
+    dispatch({ type: "setReqParams", payload: reqParams });
+    dispatch({ type: "setHistory", payload: reqParams });
     // dispatch({ type: "UPDATE_HISTORY", payload: [...history, reqParams] });
   };
 
@@ -66,7 +66,7 @@ function App() {
           data: body,
         });
         dispatch({
-          type: "UPDATE_DATA",
+          type: "setData",
           payload: {
             headers: res.headers,
             body: res.data,
@@ -74,18 +74,18 @@ function App() {
           },
         });
 
-        dispatch({ type: "UPDATE_IS_LOADING", payload: false });
+        dispatch({ type: "setIsLoading", payload: false });
       }
     } catch (error) {
       dispatch({
-        type: "UPDATE_DATA",
+        type: "setData",
         payload: {
           headers: error.res.headers,
           body: error.res.data,
           status: error.res.status,
         },
       });
-      dispatch({ type: "UPDATE_IS_LOADING", payload: false });
+      dispatch({ type: "setIsLoading", payload: false });
     }
   };
 
