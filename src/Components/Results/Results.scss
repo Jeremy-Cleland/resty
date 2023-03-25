@@ -7,7 +7,7 @@ $black: #000 !default;
 $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
 
 .response {
-  width: 50vw;
+  width: 65vw;
   height: 50vh;
   border: #000 solid 1px;
   filter: drop-shadow(0px 0px 1px #000);
@@ -30,7 +30,7 @@ span {
 
 .__json-pretty__ {
   background-color: #222222 !important;
-  width: 40vw;
+  width: 60vw;
   margin: 1rem auto;
   padding: 1rem;
   border-radius: 12px;
