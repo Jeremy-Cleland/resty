@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./Form.scss";
 
-const Form = ({ updateParams }) => {
+const Form = (props) => {
   const [method, setMethod] = useState("GET");
   const [url, setUrl] = useState("");
   const [body, setBody] = useState({});
@@ -16,7 +16,7 @@ const Form = ({ updateParams }) => {
       body: body,
     };
 
-    updateParams(formData);
+    props.handleApiCall(formData);
   };
 
   return (
@@ -67,17 +67,12 @@ const Form = ({ updateParams }) => {
               DELETE
             </button>
           </label>
-          {method === "PUT" || method === "POST" ? (
-            <>
-              <label>
-                <span>JSON Request Body: </span>
-                <textarea
-                  name="body"
-                  onChange={(event) => setBody(event.target.value)}
-                />
-              </label>
-            </>
-          ) : null}
+          <span>JSON Request Body: </span>
+          <textarea
+            name="body"
+            onChange={(event) => setBody(event.target.value)}
+          />
+
           <button
             className="formButton"
             data-testid="form-button"

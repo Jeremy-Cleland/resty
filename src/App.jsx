@@ -19,14 +19,23 @@ function App() {
 
   const switchReducer = (state = initalState, action) => {
     switch (action.type) {
-      case "setReqParams":
-        return { ...state, reqParams: action.payload };
-      case "setData":
-        return { ...state, data: action.payload };
-      case "setIsLoading":
-        return { ...state, isLoading: action.payload };
-      case "setHistory":
-        return { ...state, history: [...state.history, action.payload] };
+      case "START_REQUEST":
+        return {
+          ...state,
+          reqParams: action.payload,
+        };
+      case "END_REQUEST":
+        return {
+          ...state,
+          isLoading: false,
+          data: action.payload,
+          history: [
+            ...state.history,
+            { reqParams: { ...state.reqParams }, data: action.payload },
+          ],
+        };
+      case "CHANGE_HISTORY":
+        return { ...state, ...state.history[action.payload] };
       default:
         return state;
     }
@@ -34,77 +43,69 @@ function App() {
 
   const [state, dispatch] = useReducer(switchReducer, initalState);
 
-  const { reqParams, data, isLoading, history } = state;
-
-  useEffect(() => {
-    if (reqParams.url) {
-      dispatch({ type: "setIsLoading", payload: true });
-      callApi(reqParams);
-    }
-  }, [reqParams]);
-
-  const updateParams = (reqParams) => {
-    dispatch({ type: "setReqParams", payload: reqParams });
-    dispatch({ type: "setHistory", payload: reqParams });
-    // dispatch({ type: "UPDATE_HISTORY", payload: [...history, reqParams] });
+  const callApi = (reqParams) => {
+    let action = {
+      type: "START_REQUEST",
+      payload: reqParams,
+    };
+    dispatch(action);
   };
 
-  // Define function to call API
-
-  const callApi = async (reqParams) => {
-    const { method, url, body } = reqParams;
-
+  const getData = async () => {
+    const { method, url, body } = state.reqParams;
     try {
       if (!url || !method) {
         throw new Error("Please enter a valid URL && Method");
       } else if ((method === "PUT" || method === "POST") && !body) {
         throw new Error("Please enter a valid body");
       } else {
-        const res = await axios({
-          method,
-          url,
-          data: body,
-        });
-        dispatch({
-          type: "setData",
-          payload: {
-            headers: res.headers,
-            body: res.data,
-            status: res.status,
-          },
-        });
-
-        dispatch({ type: "setIsLoading", payload: false });
+        const res = await axios(state.reqParams);
+        let action = {
+          type: "END_REQUEST",
+          payload: res.data,
+        };
+        dispatch(action);
       }
     } catch (error) {
-      dispatch({
-        type: "setData",
-        payload: {
-          headers: error.res.headers,
-          body: error.res.data,
-          status: error.res.status,
-        },
-      });
-      dispatch({ type: "setIsLoading", payload: false });
+      let action = {
+        type: "END_REQUEST",
+        payload: error.res.data,
+      };
+      dispatch(action);
     }
   };
+  const changeHistory = (idx) => {
+    let action = {
+      type: "CHANGE_HISTORY",
+      payload: idx,
+    };
+    dispatch(action);
+  };
+
+  useEffect(() => {
+    (async () => {
+      await getData();
+    })();
+  }, [state.reqParams]);
 
   return (
     <>
       <Header />
       <div className="container-app">
         <div className="method_container">
-          Request Method: {reqParams.method}
+          Request Method: {state.reqParams.method}
         </div>
-        <div className="url_container">URL: {reqParams.url}</div>
+        <div className="url_container">URL: {state.reqParams.url}</div>
       </div>
-      <Form handleApiCall={callApi} updateParams={updateParams} />
-      <Results data={data} isLoading={isLoading} data-testid="json-body" />
-      <History history={history} updateParams={updateParams} />
-
+      <History history={state.history} changeHistory={changeHistory} />
+      <Form handleApiCall={callApi} />
+      <Results
+        data={state.data}
+        isLoading={state.isLoading}
+        data-testid="json-body"
+      />
       <Footer />
     </>
   );
 }
-
 export default App;
