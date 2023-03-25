@@ -1,0 +1,45 @@
+$secondaryBG: #222222;
+$radius: 12px;
+$primary: #b553bf;
+$secondary: #823a89;
+$third: #fba856;
+$font-stack: "Caveat", cursive;
+$black: #000 !default;
+$box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
+
+.history-container {
+  margin: 0 auto;
+  width: 51vw;
+  padding: 1rem;
+}
+.history {
+  background-color: $secondaryBG;
+  width: 20vw;
+  padding: 0.5rem 1rem;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+  filter: drop-shadow(0px 0px 5px #000);
+  overflow-y: scroll;
+  height: 12vh;
+}
+
+h3 {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  margin-right: 1rem;
+  font-family: $font-stack;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222222;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border: none;
+  background-color: $third;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+  filter: drop-shadow(0px 0px 2px #000);
+}

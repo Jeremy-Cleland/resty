@@ -1,20 +1,21 @@
-const History = ({ history, updateParams }) => {
-  const handleClick = (reqParams) => {
-    updateParams(reqParams);
-  };
+import "./History.scss";
 
+const History = ({ history, changeHistory }) => {
   return (
-    <div>
-      <h3>History</h3>
-      <ul>
-        <li>
+    <div className="history-container">
+      <div className="history">
+        <h3>History</h3>
+        <ul className="container">
           {history.map((item, idx) => (
-            <button onClick={() => handleClick(item.reqParams)} key={idx}>
-              {idx + 1} {item.method} {item.url}
-            </button>
+            <li key={`history-${idx}`}>
+              <button onClick={() => changeHistory(item.reqParams)}>
+                {item.reqParams.method.toUpperCase()} {"  "}
+                {item.reqParams.url}
+              </button>
+            </li>
           ))}
-        </li>
-      </ul>
+        </ul>
+      </div>
     </div>
   );
 };
