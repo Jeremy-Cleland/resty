@@ -12,14 +12,10 @@ const Results = ({ data, isLoading }) => {
         <pre data-testid="results">
           {data ? (
             <pre className="response">
-              <JSONPretty
-                id="json-pretty"
-                data={data}
-                theme={JSONPrettyAcai}
-              />
+              <JSONPretty id="json-pretty" data={data} theme={JSONPrettyAcai} />
             </pre>
           ) : (
-            <div className="placeholder"/>
+            <div className="placeholder" />
           )}
         </pre>
       )}
