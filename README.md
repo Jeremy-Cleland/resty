@@ -26,6 +26,7 @@
   - Renders 2 Child Components.
 
 - Form:
+
   - Expects a function to be sent to it as a prop.
   - Renders a URL entry form.
   - A selection of REST methods to choose from (“get” should be the default).
@@ -37,6 +38,7 @@
       - Toggle the “loading” status before and after the request.
 
 - Results:
+
   - Conditionally renders “Loading” or the data depending on the status of the request.
   - Expects the count, headers, results to be sent in as props.
   - Renders the count.
@@ -80,10 +82,12 @@ Extend your application to include the ability to send http requests and display
 
 Refactor your state management within the App component to use the useReducer() hook.
 
-  1. Replace any component state managements to use derived state from useReducer() with a reducer function and initial state.
+1. Replace any component state managements to use derived state from useReducer() with a reducer function and initial state.
 
 - Suggested approach:
+
   - `<App />`: Use a reducer to store and manage all application state: loading, results, history.
+
     - Add to history array in state after every api call
       - method, url, results (json).
 
