@@ -17,7 +17,7 @@ function App() {
     history: [],
   };
 
-  const switchReducer = (state = initalState, action) => {
+  const switchReducer = (action, state = initalState) => {
     switch (action.type) {
       case "START_REQUEST":
         return {
@@ -44,7 +44,7 @@ function App() {
   const [state, dispatch] = useReducer(switchReducer, initalState);
 
   const callApi = (reqParams) => {
-    let action = {
+    const action = {
       type: "START_REQUEST",
       payload: reqParams,
     };
@@ -60,14 +60,14 @@ function App() {
         throw new Error("Please enter a valid body");
       } else {
         const res = await axios(state.reqParams);
-        let action = {
+        const action = {
           type: "END_REQUEST",
           payload: res.data,
         };
         dispatch(action);
       }
     } catch (error) {
-      let action = {
+      const action = {
         type: "END_REQUEST",
         payload: error.res.data,
       };
@@ -75,7 +75,7 @@ function App() {
     }
   };
   const changeHistory = (idx) => {
-    let action = {
+    const action = {
       type: "CHANGE_HISTORY",
       payload: idx,
     };

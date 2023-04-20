@@ -16,10 +16,10 @@ const Results = ({ data, isLoading }) => {
                 id="json-pretty"
                 data={data}
                 theme={JSONPrettyAcai}
-              ></JSONPretty>
+              />
             </pre>
           ) : (
-            <div className="placeholder"></div>
+            <div className="placeholder"/>
           )}
         </pre>
       )}

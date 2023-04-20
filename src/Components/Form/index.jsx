@@ -11,9 +11,9 @@ const Form = (props) => {
     event.preventDefault();
 
     const formData = {
-      method: method,
-      url: url,
-      body: body,
+      method,
+      url,
+      body,
     };
 
     props.handleApiCall(formData);
@@ -87,15 +87,3 @@ const Form = (props) => {
 };
 
 export default Form;
-
-{
-  /* <label htmlFor="methods" className="methods">
-  Select your method:
-  <select name="selectedMethod">
-    <option value="GET">GET</option>
-    <option value="POST">POST</option>
-    <option value="PUT">PUT</option>
-    <option value="DELETE">DELETE</option>
-  </select>
-</label>; */
-}
