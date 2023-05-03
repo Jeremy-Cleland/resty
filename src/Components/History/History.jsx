@@ -7,7 +7,7 @@ const History = ({ history, changeHistory }) => {
         <h3>History</h3>
         <ul className="container">
           {history.map((item, idx) => (
-            <li key={`history-${idx}`}>
+            <li className="history_list" key={`history-${idx}`}>
               <button onClick={() => changeHistory(item.reqParams)}>
                 {item.reqParams.method.toUpperCase()} {"  "}
                 {item.reqParams.url}

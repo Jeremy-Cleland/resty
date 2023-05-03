@@ -17,6 +17,11 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
   margin: auto;
   padding: 0;
   border-radius: $radius;
+
+  @media screen and (max-width: 768px) {
+    width: 65vw;
+    height: 50vh;
+  }
 }
 
 span {
@@ -26,6 +31,14 @@ span {
   padding: 1rem;
   font-family: $font-stack;
   padding-top: 1vh;
+
+  @media screen and (max-width: 768px) {
+    width: 65vw;
+    text-align: left;
+    margin: auto;
+    padding: 0.5rem;
+    justify-content: space-around;
+  }
 }
 
 .__json-pretty__ {
@@ -36,6 +49,10 @@ span {
   border-radius: 12px;
   box-shadow: $box-shadow;
   filter: drop-shadow(0px 0px 5px #00000069);
+
+  @media screen and (max-width: 768px) {
+    width: 65vw;
+  }
 }
 
 h1 {

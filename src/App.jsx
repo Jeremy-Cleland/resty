@@ -10,24 +10,25 @@ import Results from "./Components/Results";
 import "./App.scss";
 
 function App() {
-  const initalState = {
+  const initialState = {
     reqParams: {},
     data: null,
     isLoading: false,
     history: [],
   };
 
-  const switchReducer = (action, state = initalState) => {
+  const switchReducer = (state, action) => {
     switch (action.type) {
       case "START_REQUEST":
         return {
           ...state,
           reqParams: action.payload,
+          isLoading: true, // set isLoading to true on start request
         };
       case "END_REQUEST":
         return {
           ...state,
-          isLoading: false,
+          isLoading: false, // set isLoading to false on end request
           data: action.payload,
           history: [
             ...state.history,
@@ -41,7 +42,7 @@ function App() {
     }
   };
 
-  const [state, dispatch] = useReducer(switchReducer, initalState);
+  const [state, dispatch] = useReducer(switchReducer, initialState);
 
   const callApi = (reqParams) => {
     const action = {
@@ -69,11 +70,12 @@ function App() {
     } catch (error) {
       const action = {
         type: "END_REQUEST",
-        payload: error.res.data,
+        payload: error.response.data, // fix error handling
       };
       dispatch(action);
     }
   };
+
   const changeHistory = (idx) => {
     const action = {
       type: "CHANGE_HISTORY",
@@ -83,9 +85,12 @@ function App() {
   };
 
   useEffect(() => {
-    (async () => {
-      await getData();
-    })();
+    if (state.reqParams.method && state.reqParams.url) {
+      // add guard condition
+      (async () => {
+        await getData();
+      })();
+    }
   }, [state.reqParams]);
 
   return (
@@ -101,11 +106,12 @@ function App() {
       <Form handleApiCall={callApi} />
       <Results
         data={state.data}
-        isLoading={state.isLoading}
+        isLoading={state.isLoading} // pass isLoading to Results component
         data-testid="json-body"
       />
       <Footer />
     </>
   );
 }
+
 export default App;

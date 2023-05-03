@@ -3,7 +3,7 @@ import "./Header.scss";
 const Header = () => {
   return (
     <header data-testid="header">
-      <h1>RESTy</h1>
+      <h1 className="title">RESTy</h1>
     </header>
   );
 };

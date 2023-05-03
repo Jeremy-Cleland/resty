@@ -23,7 +23,7 @@ const Form = (props) => {
     <div className="form-card">
       <div className="form">
         <form data-testid="form" onSubmit={handleSubmit}>
-          <label>
+          <label className="url">
             <span>URL: </span>
             <input
               data-testid="input"

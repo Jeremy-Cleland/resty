@@ -29,6 +29,10 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
   }
   .container-app {
     display: flex;
@@ -36,6 +40,13 @@ body {
     justify-content: space-between;
     padding: 0;
     margin: 2vw auto;
+
+    @media screen and (max-width: 768px) {
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+    }
   }
 
   .method_container {
@@ -48,15 +59,31 @@ body {
     border-radius: $radius;
     box-shadow: $box-shadow;
     filter: drop-shadow(0px 0px 5px #000);
+
+    @media screen and (max-width: 768px) {
+      width: 60vw;
+      margin: 0.5rem;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
   }
 
   .url_container {
     background-color: $secondaryBG;
     width: 30vw;
     padding: 1rem;
-    height: auto;
     border-radius: $radius;
     box-shadow: $box-shadow;
     filter: drop-shadow(0px 0px 5px #000);
+
+    @media screen and (max-width: 768px) {
+      width: 60vw;
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
   }
 }
