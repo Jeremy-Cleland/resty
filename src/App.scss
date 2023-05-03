@@ -18,72 +18,73 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
+  background: $backgroundColor;
+  height: 100vh;
   color: $third;
 }
 
-body {
-  background: $backgroundColor;
-  height: 100vh;
+#root {
+  display: flex;
+  flex-direction: column;
+  column-gap: 5rem;
 
-  #root {
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+.container-app {
+  display: flex;
+  width: 50vw;
+  max-width: 1200px;
+  justify-content: space-between;
+  padding: 0;
+  margin: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-
-    @media screen and (max-width: 768px) {
-      font-size: 12px;
-    }
+    margin: auto;
   }
-  .container-app {
+}
+
+.method_container {
+  color: $third;
+  margin-right: 1rem;
+  background-color: $secondaryBG;
+  width: 50vw;
+  padding: 1rem;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+  font-size: 0.9rem;
+  filter: drop-shadow(0px 0px 5px #000);
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin: 0.5rem;
+    align-self: center;
     display: flex;
-    width: 53vw;
-    justify-content: space-between;
-    padding: 0;
-    margin: 2vw auto;
-
-    @media screen and (max-width: 768px) {
-      width: 90vw;
-      display: flex;
-      flex-direction: column;
-      margin: auto;
-    }
-  }
-
-  .method_container {
-    color: $third;
-    margin-right: 1rem;
-    background-color: $secondaryBG;
-    width: 12vw;
+    flex-direction: column;
     padding: 1rem;
-    height: auto;
-    border-radius: $radius;
-    box-shadow: $box-shadow;
-    filter: drop-shadow(0px 0px 5px #000);
-
-    @media screen and (max-width: 768px) {
-      width: 60vw;
-      margin: 0.5rem;
-      align-self: center;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-    }
   }
+}
 
-  .url_container {
-    background-color: $secondaryBG;
-    width: 30vw;
+.url_container {
+  background-color: $secondaryBG;
+  width: 30vw;
+  padding: 1rem;
+  border-radius: $radius;
+  box-shadow: $box-shadow;
+  font-size: 0.9rem;
+  filter: drop-shadow(0px 0px 5px #000);
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
-    border-radius: $radius;
-    box-shadow: $box-shadow;
-    filter: drop-shadow(0px 0px 5px #000);
-
-    @media screen and (max-width: 768px) {
-      width: 60vw;
-      align-self: center;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-    }
+    margin: auto;
   }
 }

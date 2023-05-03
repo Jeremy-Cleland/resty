@@ -5,7 +5,7 @@ import "./Results.scss";
 
 const Results = ({ data, isLoading }) => {
   return (
-    <section>
+    <section className="response_container">
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (

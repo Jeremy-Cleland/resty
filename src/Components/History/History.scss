@@ -8,36 +8,41 @@ $black: #000 !default;
 $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
 
 .history-container {
-  margin: 0 auto;
-  width: 51vw;
-  padding: 1rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 
   @media screen and (max-width: 768px) {
-    margin: 0 0 0.5rem;
-    align-self: center;
     display: flex;
     flex-direction: column;
-    padding: 0rem;
-    font-size: 16px;
+    margin: auto;
+    width: 50vw;
+    max-width: 45%;
   }
 }
+
 .history {
+  display: flex;
   background-color: $secondaryBG;
-  width: 50vw;
+  overflow-y: scroll;
+  height: 10vh;
   padding: 0.5rem 1rem;
   border-radius: $radius;
   box-shadow: $box-shadow;
   filter: drop-shadow(0px 0px 5px #000);
   overflow-y: scroll;
   text-align: left;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 64vw;
+  max-width: 45%;
 
   @media screen and (max-width: 768px) {
-    width: 60vw;
+    max-width: 600px;
+    min-width: 250px;
     margin: 0.5rem;
     align-self: center;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
     font-size: 16px;
   }
 }
@@ -47,6 +52,7 @@ h3 {
   padding: 0;
   margin: 0;
   text-align: left;
+  font-size: 0.9rem;
 
   @media screen and (max-width: 768px) {
     width: 65vw;
@@ -56,7 +62,6 @@ h3 {
 }
 
 button {
-  margin-right: 1rem;
   font-family: $font-stack;
   font-size: 1rem;
   font-weight: 500;
@@ -70,13 +75,11 @@ button {
   filter: drop-shadow(0px 0px 2px #000);
   width: 30vw;
   display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
 
   @media screen and (max-width: 768px) {
-    width: 55vw;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
     text-align: center;
     margin: auto;
     padding: 0.5rem;
@@ -84,6 +87,7 @@ button {
     font-size: 14px;
   }
 }
+
 .history_list {
   width: 50vh;
   margin: 0 auto;

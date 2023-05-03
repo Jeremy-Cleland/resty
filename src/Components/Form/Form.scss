@@ -9,10 +9,6 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
 
 .form {
   gap: 1rem;
-  align-items: center;
-  background-color: $backgroundColor;
-  justify-content: space-evenly;
-  padding-top: 0vh;
 
   label {
     display: flex;
@@ -24,7 +20,6 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
       display: flex;
       padding: 0;
       margin: auto;
-      width: 60vw;
       align-self: center;
     }
 
@@ -36,9 +31,9 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
   }
 
   input {
-    width: 60vw;
     box-shadow: inset 0 0 20px #171717;
-    margin: auto;
+    width: 90%;
+    margin: 0 0 0 -30px;
     border-radius: $radius;
     padding: 0.5rem;
     background-color: #171717;
@@ -47,8 +42,8 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
 
     @media screen and (max-width: 768px) {
       display: flex;
+      width: 80%;
       flex-direction: column;
-      width: 60vw;
       margin: auto;
       margin-bottom: 1rem;
     }
@@ -62,23 +57,22 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
 
   button {
     cursor: pointer;
-    display: block;
-    padding: 0.2rem;
+    width: 100px;
     font-size: 1.1rem;
     font-weight: 600;
     font-family: $font-stack;
     border: none;
     margin: auto;
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-    width: 100px;
     border-radius: $radius;
     background-color: $primary;
 
     @media screen and (max-width: 768px) {
-      width: 60vw;
-      margin: auto;
-      font-size: 16px;
-      margin-right: 40px;
+      width: 50px;
+      width: 50rem;
+      font-size: 0.7rem;
+      padding: 4px;
+      margin: auto 5 auto;
     }
 
     &:hover {
@@ -98,6 +92,11 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
     padding: 0.2rem;
     font-size: 1.1rem;
     font-weight: 600;
+
+    @media screen and (max-width: 768px) {
+      width: 250px;
+      margin: 2rem auto;
+    }
 
     &:hover {
       background-color: $third;
@@ -126,9 +125,10 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
     filter: drop-shadow(0px 0px 10px #000);
 
     @media screen and (max-width: 768px) {
-      margin: 1rem auto;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 1rem;
       margin-top: 1rem;
-      padding-top: 1rem;
     }
   }
 }
@@ -137,16 +137,19 @@ $box-shadow: 0 1rem 1.5rem rgba($black, 0.3) !default;
   padding: 0.25rem;
   margin: auto;
   width: 50vw;
-  max-width: 95%;
+  max-width: 45%;
   height: 50vh;
   border-radius: 12px;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.3);
   filter: drop-shadow(0px 0px 5px #000);
 
   @media screen and (max-width: 768px) {
-    width: 65vw;
+    max-width: 600px;
+    width: 80%;
+    min-width: 300px;
     text-align: left;
     height: fit-content;
+    margin: 0 auto;
   }
 }
 .url {
