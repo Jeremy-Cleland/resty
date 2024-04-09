@@ -24,9 +24,9 @@ const server = setupServer(
             url: "https://pokeapi.co/api/v2/pokemon/2/",
           },
         ],
-      })
+      }),
     );
-  })
+  }),
 );
 
 beforeAll(() => server.listen());
@@ -92,7 +92,7 @@ describe("Form Mock Server Test", () => {
       <>
         <Form reqParamsUpdate={reqParamsUpdate} />
         <Results data={data} />
-      </>
+      </>,
     );
 
     const input = screen.getByTestId("input");
